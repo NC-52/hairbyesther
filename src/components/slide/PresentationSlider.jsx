@@ -44,7 +44,7 @@ const PresentationSlider = (props) => {
                                         <div className="detail-box">
                                             <h1 className="slide-into-title">
                                                 Bienvenu sur <br/>
-                                                Hair by Esther
+                                                Hair by <strong className="estelle_name">Estelle</strong>
                                             </h1>
                                             <p className="intro-description">
                                                 Trouvez une gamme de produits pour rélever la splandeur de votre visage,

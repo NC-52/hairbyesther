@@ -116,7 +116,9 @@ a:focus {
     padding: 0;
     border: none;
 }
-
+.brand-name{
+    font-family: parisienneregular, sans-serif;
+}
 .navbar-brand span {
     font-size: 24px;
     font-weight: bold;

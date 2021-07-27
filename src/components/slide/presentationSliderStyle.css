@@ -464,6 +464,11 @@
     -ms-flex-pack: justify;
     justify-content: space-between;
 }
+.estelle_name{
+    font-family: parisienneregular, sans-serif;
+    color: #f33f3f;
+    /*color: #ad1e03;*/
+}
 
 .client_section .box .client_info .client_name h5 {
     font-weight: 600;

@@ -9,7 +9,7 @@ const Header = (props) => {
             <header className="header_section long_section px-0">
                 <nav className="navbar navbar-expand-lg custom_nav-container ">
                     <a className="navbar-brand" href="index.html">
-                        <span className="brand-name">Hair By ESTH</span>
+                        <span>Hair By <strong className="brand-name">Estelle</strong></span>
                     </a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
