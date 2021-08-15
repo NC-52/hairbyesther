@@ -25,7 +25,7 @@ const PresentationSlider = (props) => {
                                                 à votre disposition.
                                             </p>
                                             <a href="">
-                                                Les Produits
+                                                Nos Produits
                                             </a>
                                         </div>
                                     </div>
@@ -51,7 +51,7 @@ const PresentationSlider = (props) => {
                                                 mais aussi de votre peau et soyez toujours magnifique.
                                             </p>
                                             <a href="">
-                                                Les Produits
+                                                Nos Produits
                                             </a>
                                         </div>
                                     </div>
@@ -78,7 +78,7 @@ const PresentationSlider = (props) => {
                                                 votre disposition.
                                             </p>
                                             <a href="">
-                                                Les Produits
+                                                Nos Produits
                                             </a>
                                         </div>
                                     </div>
