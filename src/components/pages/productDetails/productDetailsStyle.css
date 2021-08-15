@@ -1,0 +1,44 @@
+.py-5 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+}
+
+.display-5 {
+    font-size: calc(1.425rem + 2.1vw);
+    font-weight: 300;
+    line-height: 1.2;
+}
+
+.top-detail {
+    text-align: left;
+}
+
+.article-price {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.px-4 {
+    padding-right: 1.5rem !important;
+    padding-left: 1.5rem !important;
+}
+
+.px-lg-5 {
+    padding-right: 3rem !important;
+    padding-left: 3rem !important;
+}
+
+.product-info{
+    margin-top: 32px;
+}
+
+.card-img-top {
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-top-right-radius: calc(0.25rem - 1px);
+}
+
+@media (min-width: 1200px) {
+    .display-5 {
+        font-size: 3rem;
+    }
+}
