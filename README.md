@@ -1,4 +1,4 @@
-# Hiar By Esth
+# Hiar By Estelle
 
 ## Technology stack
 * React JS v17

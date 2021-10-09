@@ -6,6 +6,7 @@ import prod03 from './images/product_03.jpg'
 import prod04 from './images/product_04.jpg'
 import prod05 from './images/product_05.jpg'
 import prod06 from './images/product_06.jpg'
+import {NavLink} from "react-router-dom";
 
 const ProductList = (props) => {
     return (
@@ -85,18 +86,18 @@ const ProductList = (props) => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-lg-4 col-md-4 all des">
-                                    <div className="product-item">
-                                        <a href="#"><img src={prod06} alt=""/></a>
-                                        <div className="down-content">
-                                            <a href="#"><h4>Tittle goes here</h4></a>
-                                            <h6>€12.50</h6>
-                                            <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla
-                                                aspernatur.</p>
-                                            <span>Popularité (7/10)</span>
-                                        </div>
-                                    </div>
-                                </div>
+                                {/*<div className="col-lg-4 col-md-4 all des">*/}
+                                {/*    <div className="product-item">*/}
+                                {/*        <a href="#"><img src={prod06} alt=""/></a>*/}
+                                {/*        <div className="down-content">*/}
+                                {/*            <a href="#"><h4> <NavLink to='/product='>Tittle goes here</NavLink></h4></a>*/}
+                                {/*            <h6>€12.50</h6>*/}
+                                {/*            <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla*/}
+                                {/*                aspernatur.</p>*/}
+                                {/*            <span>Popularité (7/10)</span>*/}
+                                {/*        </div>*/}
+                                {/*    </div>*/}
+                                {/*</div>*/}
                             </div>
                         </div>
                     </div>
