@@ -4,6 +4,7 @@
     display: flex;
     flex-wrap: nowrap;
     overflow-x: hidden;
+    position: relative;
 }
 
 .slider-slide {
@@ -11,9 +12,40 @@
     margin-top: 4rem;
     /* make height fit parent, no scroll bar*/
     height: auto;
-    width: 100%;
+    width: 100vw;
     flex-shrink: 0;
     /*    To fit the all element*/
     background-position: center;
     background-size: cover;
+    transition: all 750ms ease-in-out;
+}
+
+.slider-children-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.slider-slide-indicator {
+    display: flex;
+    flex-wrap: nowrap;
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+}
+
+.slider-slide-indicator .dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #2d2d2d;
+    border: 1px solid #f5f5f5;
+    opacity: .8;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    cursor: pointer;
 }
