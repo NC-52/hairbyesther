@@ -1,5 +1,4 @@
 import './App.css'
-import Header from './components/header/Header'
 import React from "react";
 import LandingPage from "./components/pages/landing/LandingPage";
 import Footer from "./components/footer/Footer";
@@ -13,7 +12,6 @@ function App() {
     return (
         <BrowserRouter>
             <div className="App">
-                {/*<Header/>*/}
                 <HeaderComponent/>
                 <Switch>
                     <Route exact path={ROUTES.HOME} component={LandingPage}/>

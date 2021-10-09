@@ -1,0 +1,19 @@
+.slider-wrapper {
+    height: 90vh;
+    /*border: 1px solid limegreen;*/
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+}
+
+.slider-slide {
+    /*border: 2px solid red;*/
+    margin-top: 4rem;
+    /* make height fit parent, no scroll bar*/
+    height: auto;
+    width: 100%;
+    flex-shrink: 0;
+    /*    To fit the all element*/
+    background-position: center;
+    background-size: cover;
+}
