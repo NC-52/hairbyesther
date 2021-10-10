@@ -1,5 +1,5 @@
 .slider-wrapper {
-    height: 90vh;
+    height: 98vh;
     /*border: 1px solid limegreen;*/
     display: flex;
     flex-wrap: nowrap;
@@ -25,6 +25,46 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.slider-marketing-message{
+    /*border: 3px solid saddlebrown;*/
+    position: relative;
+    margin-top: auto;
+    width: 100%;
+    background: #3e3e3e50;
+    height: 100%;
+    background: linear-gradient(1turn, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.01));
+}
+
+.slider-marketing-message .content{
+    /*border: 3px solid #eaaa7b;*/
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30vh;
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 0 10vw;
+}
+
+.content .mrk-title{
+    font-size: 50px;
+    font-weight: 400;
+    /*font-family: 'Roboto', sans-serif;*/
+    /*font-family: 'Dancing Script', cursive;*/
+    /*font-family: 'Festive', cursive;*/
+    /*font-family: 'Carattere', cursive;*/
+    /*font-family: 'Parisienne', cursive;*/
+    font-family: 'Ephesis', cursive;
+}
+
+.content .mrk-message{
+    font-size: 24px;
+    font-weight: 400;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .slider-slide-indicator {

@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import './image-slider.style.css'
+import {message} from "antd";
 
 const SlideIndicator = ({currentSld, numOfSld, handleSlideSelection}) => {
     return <>
@@ -9,13 +10,13 @@ const SlideIndicator = ({currentSld, numOfSld, handleSlideSelection}) => {
                     <div
                         key={index}
                         className="dot mr-2"
-                        onClick={()=>handleSlideSelection(index)}
+                        onClick={() => handleSlideSelection(index)}
                         style={{
-                            background:`${currentSld === index ? '#ad5c05' : 'none'}`,
+                            background: `${currentSld === index ? '#ad5c05' : 'none'}`,
                             transition: 'all .3s ease-in-out'
                         }}
                     >
-                        {index+1}
+                        {index + 1}
                     </div>
                 ))
             }
@@ -23,9 +24,17 @@ const SlideIndicator = ({currentSld, numOfSld, handleSlideSelection}) => {
     </>
 }
 
+const SliderMarketingMessage = ({title, marketingMessage}) => {
+    return <div className='slider-marketing-message'>
+        <div className="content">
+            <span className='mrk-title'>{title}</span>
+            <span className='mrk-message'>{marketingMessage}</span>
+        </div>
+    </div>
+}
 
 function ImageSlider({
-                         images = [],
+                         sliderObject = [],
                          autoPlay = true,
                          playTime = 5000,
                          ...restOfProps
@@ -33,7 +42,7 @@ function ImageSlider({
 
     const [currentSlide, setCurrentSlide] = useState(0)
 
-    const nextSlide = (current = currentSlide) => current < images.length - 1 ? current + 1 : 0
+    const nextSlide = (current = currentSlide) => current < sliderObject.length - 1 ? current + 1 : 0
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -46,23 +55,23 @@ function ImageSlider({
     return <>
         <div className="slider-wrapper" {...restOfProps}>
             {
-                images.map((img, index) => (
+                sliderObject.map((slideObj, index) => (
                     <div
+                        key={index}
+                        className='slider-slide'
                         style={{
-                            backgroundImage: `url(${img})`,
+                            backgroundImage: `url(${slideObj.image})`,
                             marginLeft: index === 0 ? `-${currentSlide * 100}%` : undefined,
                         }}
-                        className='slider-slide'
-                        key={index}
                     >
-
+                        <SliderMarketingMessage {...slideObj}/>
                     </div>
                 ))
             }
             <SlideIndicator
                 currentSld={currentSlide}
-                numOfSld={images.length}
-                handleSlideSelection={nextSlide}
+                numOfSld={sliderObject.length}
+                handleSlideSelection={(i) => nextSlide(i)}
             />
         </div>
     </>

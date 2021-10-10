@@ -10,10 +10,38 @@ import img3 from '../../../assets/images/img3.jpg'
 import img4 from '../../../assets/images/img4.jpg'
 import img5 from '../../../assets/images/img5.jpg'
 
+const slideObject = [
+    {
+        title: 'Slide 1',
+        marketingMessage: 'Slide 1 marketing message',
+        image: img1
+    },
+    {
+        title: 'Slide 2',
+        marketingMessage: 'Slide 2 marketing message',
+        image: img2
+    },
+    {
+        title: 'Slide 3',
+        marketingMessage: 'Slide 3 marketing message',
+        image: img3
+    },
+    {
+        title: 'Slide 4',
+        marketingMessage: 'Slide 4 marketing message',
+        image: img4
+    },
+    {
+        title: 'Slide 5',
+        marketingMessage: 'Slide 5 marketing message',
+        image: img5
+    },
+]
+
 const LandingPage = () => {
     return (
         <>
-            <ImageSlider images={[img1, img2, img3, img4, img5]} />
+            <ImageSlider sliderObject={slideObject}/>
             {/*<PresentationSlider/>*/}
             {/*<ProductList/>*/}
             {/*<AuthorPresentation/>*/}
