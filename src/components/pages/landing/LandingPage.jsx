@@ -43,7 +43,7 @@ const LandingPage = () => {
         <>
             <ImageSlider sliderObject={slideObject}/>
             {/*<PresentationSlider/>*/}
-            <ProductList/>
+            <ProductList title='Top tendance'/>
             {/*<AuthorPresentation/>*/}
         </>
     )

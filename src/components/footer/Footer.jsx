@@ -4,9 +4,9 @@ import './footerStyle.css'
 const Footer = () => {
     return (
         <>
-            <section className="info_section  layout_padding2-top">
+            <div className="info_section  layout_padding2-top">
                 <div className="social_container">
-                    <div className="social_box">
+                    <div className="social_box mt-3">
                         <a href="">
                             <i className="fab fa-facebook-square" aria-hidden="true"></i>
                         </a>
@@ -78,7 +78,7 @@ const Footer = () => {
                         </p>
                     </div>
                 </footer>
-            </section>
+            </div>
         </>
     )
 }

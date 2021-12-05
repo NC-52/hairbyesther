@@ -1,7 +1,7 @@
 import './App.css'
 import React from "react";
 import LandingPage from "./components/pages/landing/LandingPage";
-import Footer from "./components/footer/Footer";
+// import Footer from "./components/footer/Footer";
 import * as ROUTES from './constant/Routes'
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import ProductDetails from "./components/pages/productDetails/ProductDetails";

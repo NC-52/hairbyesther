@@ -1,5 +1,8 @@
 import React from 'react'
 import './header.style.scss'
+// import HairByEstelleLogo from "../logo/HairByEstelleLogo";
+import {ReactComponent as HairByEstelleLogo} from "../../assets/logo/hairbyestelle.svg";
+import {Link} from "react-router-dom";
 
 const HeaderComponent = () => {
     return (
@@ -9,10 +12,12 @@ const HeaderComponent = () => {
                 <input type="checkbox" id="show-menu"/>
                 <div className="content">
                     <label htmlFor="show-menu" className="menu-icon">
-                        <i className="fas fa-bars"></i>
+                        <i className="fas fa-bars"/>
                     </label>
                     <div className="logo">
-                        <a href="/home">Aiwa-Moma ink</a>
+                        <Link  to="/home">
+                            <HairByEstelleLogo />
+                        </Link>
                     </div>
                     <ul className="links">
                         <li className="nav-menu-item"><a href="#">Home</a></li>
