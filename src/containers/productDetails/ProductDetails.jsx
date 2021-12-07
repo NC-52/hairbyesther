@@ -1,7 +1,7 @@
 import React from 'react'
 import tof from './img/product_03.jpg'
 import './productDetailsStyle.css'
-import ProductList from "../../products/ProductList";
+import ProductList from "../../components/products/ProductList";
 
 const ProductDetails = () => {
     return (

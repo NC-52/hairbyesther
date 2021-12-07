@@ -1,13 +1,12 @@
 import './App.css'
 import React from "react";
-import LandingPage from "./components/pages/landing/LandingPage";
-// import Footer from "./components/footer/Footer";
+import LandingPage from "./containers/landing/LandingPage";
 import * as ROUTES from './constant/Routes'
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import ProductDetails from "./components/pages/productDetails/ProductDetails";
+import ProductDetails from "./containers/productDetails/ProductDetails";
 import CardComponent from "./components/card/Card.component";
 import HeaderComponent from "./components/header/header.component";
-import AdminPanel from "./components/pages/admin/AdminPanel";
+import AdminPanel from "./containers/admin/AdminPanel";
 
 function App() {
     return (
@@ -22,7 +21,6 @@ function App() {
                         <Route path='/card' component={CardComponent}/>
                     </div>
                 </Switch>
-                {/*<Footer/>*/}
             </div>
         </BrowserRouter>
 
