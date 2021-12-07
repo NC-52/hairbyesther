@@ -23,7 +23,6 @@ const AdminNavbar = styled.nav`
   padding: 0 2rem;
   box-shadow: 0 4px 8px #3e3e3e;
 `
-
 const ConnectedUserInfo = styled.button`
   border: none;
   padding: 8px;
@@ -46,7 +45,7 @@ const AdminContentWrapper = styled.div`
 `
 const LeftMenuPanel = styled.div`
   background: #02334c;
-  width: ${({showSidebar}) => showSidebar ? '300' : '75'}px;
+  width: ${({showSidebar}) => showSidebar ? '300' : '50'}px;
   position: fixed;
   top: 4rem;
   height: 100vh;
@@ -59,7 +58,7 @@ const AppContentWrapper = styled.div`
   position: relative;
   top: .6rem;
   border: 1px solid springgreen;
-  left: ${({showSidebar}) => showSidebar ? '300' : '85'}px;
+  left: ${({showSidebar}) => showSidebar ? '300' : '60'}px;
   transition: 350ms;
 `
 const Footer = styled.div`
@@ -67,6 +66,22 @@ const Footer = styled.div`
   justify-content: center;
   align-items: center;
   color: #868686;
+  margin-top: 2px;
+`
+const SideHeader = styled.div`
+  display: ${({showSidebar}) => showSidebar ? 'flex' : 'none'};
+  height: 28%;
+  background: #022d42;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 8px 0;
+  transition: all 350ms ease;
+`
+const AdminUsername = styled.span`
+  color: floralwhite;
+  font-size: 13px;
+  margin-top: 8px;
 `
 
 const AdminPanel = (props) => {
@@ -80,7 +95,7 @@ const AdminPanel = (props) => {
         <Container>
             <AdminNavbar>
                 <div>
-                    <AiIcons.AiOutlineBars onClick={toggleSidebar}
+                    <AiIcons.AiOutlineMenu onClick={toggleSidebar}
                                            style={{color: 'antiquewhite', fontSize: '1.5rem', marginRight: 16}}/>
                     <HairByEstelleLogo/>
                 </div>
@@ -94,13 +109,18 @@ const AdminPanel = (props) => {
             </AdminNavbar>
             <AdminContentWrapper>
                 <LeftMenuPanel showSidebar={showSidebar}>
+                    <SideHeader showSidebar={showSidebar}>
+                        <Avatar size={90} icon={<UserOutlined/>}/>
+                        <AdminUsername>work-bt@gmail.com</AdminUsername>
+                        <Footer>&copy;2022 all rights reserved</Footer>
+                    </SideHeader>
                     {
                         sidebarMenuData.map((item, index) => (
-                            <SidebarMenuItem menuItem={item} key={index}/>
+                            <SidebarMenuItem showSidebar={showSidebar} menuItem={item} key={index}/>
                         ))
                     }
                 </LeftMenuPanel>
-                <AppContentWrapper showSidebar={showSidebar}>
+                <AppContentWrapper showSidebar={showSidebar} onClick={() => setShowSidebar(false)}>
                     <Switch>
                         <Route path='/secure-admin/dashboard' component={Dashboard}/>
                         <Route path='/secure-admin/orders' component={Orders}/>

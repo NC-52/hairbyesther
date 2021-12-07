@@ -8,7 +8,32 @@ export const sidebarMenuData = [
     },
     {
         title: 'Orders',
-        icon: <AiIcons.AiFillShop/>,
+        icon: <AiIcons.AiOutlineSolution/>,
         path: '/secure-admin/orders'
+    },
+    {
+        title: 'Sales',
+        icon: <AiIcons.AiFillTag/>,
+        path: '/secure-admin/sales'
+    },
+    {
+        title: 'Customers',
+        icon: <AiIcons.AiOutlineTeam/>,
+        path: '/secure-admin/customers'
+    },
+    {
+        title: 'Messages',
+        icon: <AiIcons.AiFillMail/>,
+        path: '/secure-admin/messages'
+    },
+    {
+        title: 'Settings',
+        icon: <AiIcons.AiFillSetting/>,
+        path: '/secure-admin/settings'
+    },
+    {
+        title: 'Help',
+        icon: <AiIcons.AiFillQuestionCircle/>,
+        path: '/secure-admin/help'
     }
 ]
