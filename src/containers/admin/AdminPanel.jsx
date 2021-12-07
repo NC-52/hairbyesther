@@ -9,6 +9,7 @@ import Dashboard from "./dashboard/Dashboard";
 import {sidebarMenuData} from "./sidebarMenuData";
 import SidebarMenuItem from "./sidebarItem/SidebarMenuItem";
 import Orders from "./orders/Orders";
+import Products from "./products/Products";
 
 const Container = styled.div`
 //#ff9955
@@ -41,7 +42,10 @@ const Username = styled.span`
 `
 const AdminContentWrapper = styled.div`
   display: flex;
+  width: calc(100vw * .94);
   position: relative;
+  justify-content: center;
+  overflow: hidden;
 `
 const LeftMenuPanel = styled.div`
   background: #02334c;
@@ -56,6 +60,9 @@ const LeftMenuPanel = styled.div`
 const AppContentWrapper = styled.div`
   background: white;
   position: relative;
+  display: flex;
+  width: 100%;
+  justify-content: center;
   top: .6rem;
   border: 1px solid springgreen;
   left: ${({showSidebar}) => showSidebar ? '300' : '60'}px;
@@ -70,7 +77,7 @@ const Footer = styled.div`
 `
 const SideHeader = styled.div`
   display: ${({showSidebar}) => showSidebar ? 'flex' : 'none'};
-  height: 28%;
+  height: 250px;
   background: #022d42;
   justify-content: center;
   align-items: center;
@@ -123,6 +130,7 @@ const AdminPanel = (props) => {
                 <AppContentWrapper showSidebar={showSidebar} onClick={() => setShowSidebar(false)}>
                     <Switch>
                         <Route path='/secure-admin/dashboard' component={Dashboard}/>
+                        <Route path='/secure-admin/products' component={Products}/>
                         <Route path='/secure-admin/orders' component={Orders}/>
                     </Switch>
                 </AppContentWrapper>

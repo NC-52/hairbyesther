@@ -7,7 +7,7 @@ const Container = styled(NavLink)`
   height: 3rem;
   justify-content: flex-start;
   align-items: center;
-  font-size: 20px;
+  font-size: 18px;
   color: antiquewhite;
   padding: 0 13px;
   text-decoration: none;

@@ -3,3 +3,7 @@
     margin: 0;
     padding: 0;
 }
+.active{
+    border-left: 4px solid #fda062;
+    background: #503422;
+}

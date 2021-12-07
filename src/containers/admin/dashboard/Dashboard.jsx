@@ -1,17 +1,34 @@
 import React from "react";
 import styled from "styled-components";
+import {fakeData} from "../fakeData";
+import StatCard from "./StatCard";
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
   position: relative;
-  //margin-left: 100px;
-  //margin-top: 100px;
+  //width: 90vw;
+  margin: 16px;
+`
+const OverviewStats = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 `
 
 const Dashboard = () => {
     return <>
         <Container>
-            <h1>Dashboard</h1>
+            <h1 style={{color: '#868686', fontSize: 32}}>Dashboard</h1>
+            <OverviewStats>
+                {
+                    fakeData.map((item, index) => (
+                        <StatCard itemDetails={item} key={index}/>
+                    ))
+                }
+            </OverviewStats>
+
         </Container>
     </>
 }

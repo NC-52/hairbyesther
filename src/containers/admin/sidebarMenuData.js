@@ -12,9 +12,9 @@ export const sidebarMenuData = [
         path: '/secure-admin/orders'
     },
     {
-        title: 'Sales',
-        icon: <AiIcons.AiFillTag/>,
-        path: '/secure-admin/sales'
+        title: 'Products',
+        icon: <AiIcons.AiFillSkin/>,
+        path: '/secure-admin/products'
     },
     {
         title: 'Customers',
