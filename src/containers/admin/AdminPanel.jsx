@@ -129,7 +129,7 @@ const AdminPanel = (props) => {
                 </LeftMenuPanel>
                 <AppContentWrapper showSidebar={showSidebar} onClick={() => setShowSidebar(false)}>
                     <Switch>
-                        <Route path='/secure-admin/dashboard' component={Dashboard}/>
+                        <Route path='/secure-admin/' component={Dashboard}/>
                         <Route path='/secure-admin/products' component={Products}/>
                         <Route path='/secure-admin/orders' component={Orders}/>
                     </Switch>
