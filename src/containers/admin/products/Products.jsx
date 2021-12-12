@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import styled from "styled-components";
+import Category from "../../../components/product-category/Category";
+import {Button} from "antd";
 
 const Container = styled.div`
   display: flex;
@@ -14,8 +16,8 @@ const ProductSection = styled.div`
 `
 
 const ProductImagePreview = styled.div`
-  width: 300px;
-  height: 300px;
+  width: 280px;
+  height: 330px;
   position: relative;
   display: flex;
   justify-content: center;
@@ -31,6 +33,7 @@ const ImageLabel = styled.div`
   border: 1px dashed #d9dfe7;
   justify-content: center;
   align-items: center;
+        background: rgba(227,227,227,0.3);
   & label{
       width: 100%;
       height: 100%;
@@ -42,7 +45,7 @@ const ImageLabel = styled.div`
       color: #bfc0c0;
       display: flex;
       &:hover{
-        background: rgba(30,30,30,0.30);
+        background: rgba(30,30,30,0.16);
         transition: all .6s ease;
       }
   }
@@ -93,24 +96,30 @@ const Products = () => {
             <RegistrationForm>
                 <FormInputField>
                     <label htmlFor="product_name">Product name</label>
-                    <input type="text" id='product_name' style={{padding: 4, width: '70%', border: '.5px solid lightgray'}}
+                    <input type="text" id='product_name'
+                           style={{padding: 4, width: '70%', border: '.5px solid lightgray'}}
                            placeholder='Product name'/>
                 </FormInputField>
                 <FormInputField>
+                    <label htmlFor="product_qte">Quantity</label>
+                    <input type="number" id="product_qte"
+                           style={{padding: 4, width: '70%', border: '.5px solid lightgray'}}/>
+                </FormInputField>
+                <FormInputField>
                     <label htmlFor="product_price">Price</label>
-                    <input type="number" id="product_price" style={{padding: 4, width: '70%', border: '.5px solid lightgray'}}/>
+                    <input type="number" id="product_price"
+                           style={{padding: 4, width: '70%', border: '.5px solid lightgray'}}/>
                 </FormInputField>
                 <FormInputField>
                     <label htmlFor="product_desc">Description</label>
                     <textarea
                         id="product_desc"
-                        style={{padding: 4, resize: 'none', width: '70%', height: 200, border: '.5px solid lightgray'}}
-                        placeholder="Product description" />
+                        style={{padding: 4, resize: 'none', width: '70%', height: 150, border: '.5px solid lightgray'}}
+                        placeholder="Product description"/>
                 </FormInputField>
+                <Button disabled type="primary" style={{marginTop: 16}}>Save Product</Button>
             </RegistrationForm>
-            {/*<ProductCategory>*/}
-            {/*    <label htmlFor="product_cat">Category</label>*/}
-            {/*</ProductCategory>*/}
+            <Category/>
         </ProductSection>
     </Container>
 }
