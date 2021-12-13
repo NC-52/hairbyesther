@@ -1,11 +1,12 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 import Category from "../../../components/product-category/Category";
-import {Button} from "antd";
+import {Button, Tabs} from "antd";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   position: relative;
   margin: 16px;
 `
@@ -15,14 +16,23 @@ const ProductSection = styled.div`
   justify-content: center;
 `
 
+const TabsWrapper = styled.div`
+width: 90vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0;
+  border: 1px solid rgba(227,227,227,0.44);
+  margin-top: 16px;
+`
+
 const ProductImagePreview = styled.div`
   width: 280px;
   height: 330px;
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-size: contain;
+  background-size: cover;
   background: url(${({image}) => image && URL.createObjectURL(image)}) no-repeat center center;
 `
 
@@ -70,15 +80,21 @@ const FormInputField = styled.div`
     margin: 2px;
 `
 
-// const ProductCategory = styled.div`
-//   width: 320px;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   border: 1px dashed lightblue;
-//   margin-left: 8px;
-// `
+const ActionButtonGroup = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 8px;
+`
 
+const ActionButton = styled.button`
+  padding: 8px;
+  border: none;
+  background: #1a6692;
+  font-size: 12px;
+  color: white;
+`
+const {TabPane} = Tabs
 const Products = () => {
     const [productImage, setProductImage] = useState(null)
 
@@ -117,10 +133,22 @@ const Products = () => {
                         style={{padding: 4, resize: 'none', width: '70%', height: 150, border: '.5px solid lightgray'}}
                         placeholder="Product description"/>
                 </FormInputField>
-                <Button disabled type="primary" style={{marginTop: 16}}>Save Product</Button>
+                <ActionButtonGroup>
+                    <ActionButton>Save Product</ActionButton>
+                </ActionButtonGroup>
             </RegistrationForm>
             <Category/>
         </ProductSection>
+        <TabsWrapper>
+            <Tabs>
+                <TabPane tab="Women products" key='1'>
+                    <p>One tab</p>
+                </TabPane>
+                <TabPane tab="Men products" key='2'>
+                    <p>Second tab</p>
+                </TabPane>
+            </Tabs>
+        </TabsWrapper>
     </Container>
 }
 

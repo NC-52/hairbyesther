@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import styled from "styled-components";
-import {Button, Modal, Select} from "antd";
+import {Button, Input, Modal, Select} from "antd";
+import PlusOutlined from "@ant-design/icons/lib/icons/PlusOutlined";
 
 const Container = styled.div`
   width: 200px;
@@ -17,9 +18,11 @@ const Container = styled.div`
 const {Option} = Select
 const Category = () => {
     const [showModal, setShowModal] = useState(false)
+    const [newCategoryName, setNewCategoryName] = useState(null)
 
     const handleOkButton = () => {
-        setShowModal(false)
+        alert(newCategoryName && newCategoryName)
+        //setShowModal(false)
     }
     const handleCancelButton = () => {
         setShowModal(false)
@@ -31,7 +34,16 @@ const Category = () => {
             <Option value='women'>women</Option>
             <Option value='men'>men</Option>
         </Select>
-        <Button type='primary' style={{marginTop: 8}} onClick={() => setShowModal(true)}>New category</Button>
+        <Button type='primary'
+                style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginTop: 8,
+                }}
+                icon={<PlusOutlined/>}
+                onClick={() => setShowModal(true)}
+        >New category</Button>
         <Modal
             centered
             title='Add new category'
@@ -39,11 +51,18 @@ const Category = () => {
             onOk={handleOkButton}
             onCancel={handleCancelButton}
             footer={[
-                <Button key="back">Cancel</Button>,
-                <Button key="submit" type="primary" loading={true}>Save</Button>
+                <Button key="back" onClick={handleCancelButton}>Cancel</Button>,
+                <Button key="submit" type="primary" onClick={handleOkButton}>Save</Button>
             ]}
         >
-            <p>Category information</p>
+            <div>
+                <p>Specify new category name</p>
+                <Input
+                    value={newCategoryName}
+                    placeholder="type category name"
+                    allowClear
+                    onChange={e => setNewCategoryName(e.target.value)}/>
+            </div>
         </Modal>
     </Container>
 }
