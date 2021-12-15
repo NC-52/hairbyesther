@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Button, Input, Modal, Select } from "antd";
 import PlusOutlined from "@ant-design/icons/lib/icons/PlusOutlined";
 import { useDispatch } from "react-redux";
-import { newCategory } from "../../redux/actions/categoryActions";
+import {
+    allCategories,
+    newCategory,
+} from "../../redux/actions/categoryActions";
 import * as feedbacks from "../ui-feedbacks/messages/messages";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
     width: 200px;
@@ -25,6 +29,7 @@ const Category = () => {
     const [isOnGoingApiCall, setOngoingApiCall] = useState(false);
 
     const dispatch = useDispatch();
+    const categories = useSelector((state) => state.categories);
 
     const handleOkButton = () => {
         setOngoingApiCall(true);
@@ -35,8 +40,9 @@ const Category = () => {
             .then((response) => {
                 if (response.status === 201) {
                     // 201 === HttpStatus.CREATED
-                    feedbacks.success("Category saved!");
+                    feedbacks.success("Category created!");
                 }
+                dispatch(allCategories());
             })
             .catch((error) => {
                 if (error.response.status === 400) {
@@ -53,12 +59,25 @@ const Category = () => {
         setShowModal(false);
     };
 
+    useEffect(() => {
+        dispatch(allCategories());
+    }, []);
+
     return (
         <Container>
             <h5>Category selection</h5>
-            <Select defaultValue="women" allowClear>
-                <Option value="women">women</Option>
-                <Option value="men">men</Option>
+            <Select
+                defaultValue={categories.length === 0 ? "Empty" : "Choose"}
+                allowClear
+            >
+                {categories &&
+                    categories.map((category, index) => (
+                        <Option key={index} value={category.name}>
+                            {category.name}
+                        </Option>
+                    ))}
+                {/* <Option value="women">women</Option>
+                <Option value="men">men</Option> */}
             </Select>
             <Button
                 type="primary"

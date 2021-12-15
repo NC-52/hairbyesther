@@ -6,11 +6,6 @@ const addCategoryActionCreator = (catData) => ({
     // payload: catData,
 });
 
-const getCategories = (categoryList) => ({
-    type: catActionTypes.GET_CATEGORIES,
-    payload: categoryList,
-});
-
 export const newCategory = (categoryData) => async (dispatch) => {
     const response = await apiCalls.addCategory(categoryData);
     dispatch(addCategoryActionCreator(response.data));
@@ -19,6 +14,9 @@ export const newCategory = (categoryData) => async (dispatch) => {
 
 export const allCategories = () => async (dispatch) => {
     const response = await apiCalls.fetchCategories();
-    dispatch(getCategories(response.data));
+    dispatch({
+        type: catActionTypes.GET_CATEGORIES,
+        payload: response.data,
+    });
     return response;
 };
