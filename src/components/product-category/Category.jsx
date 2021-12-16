@@ -59,6 +59,10 @@ const Category = () => {
         setShowModal(false);
     };
 
+    const handleCategorySelectChange = (event) => {
+        console.log(event);
+    };
+
     useEffect(() => {
         dispatch(allCategories());
     }, []);
@@ -68,6 +72,7 @@ const Category = () => {
             <h5>Category selection</h5>
             <Select
                 defaultValue={categories.length === 0 ? "Empty" : "Choose"}
+                onChange={handleCategorySelectChange}
                 allowClear
             >
                 {categories &&
@@ -76,8 +81,6 @@ const Category = () => {
                             {category.name}
                         </Option>
                     ))}
-                {/* <Option value="women">women</Option>
-                <Option value="men">men</Option> */}
             </Select>
             <Button
                 type="primary"

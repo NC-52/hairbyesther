@@ -4,7 +4,7 @@ const initialState = [];
 
 export const categoryReducer = (state = initialState, action) => {
     if (action.type === CATEGORY_ACTIONS.GET_CATEGORIES) {
-        return [...state, ...action.payload];
+        return [...action.payload];
     } else if (action.type === CATEGORY_ACTIONS.CREATE_CATEGORY) {
         return [...state];
     }

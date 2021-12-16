@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Category from "../../../components/product-category/Category";
-import { Tabs } from "antd";
+import { Tabs, Button, Input } from "antd";
 // import { useDispatch } from "react-redux";
+import { EuroOutlined, SaveOutlined } from "@ant-design/icons";
 
 const Container = styled.div`
     display: flex;
@@ -89,19 +90,58 @@ const ActionButtonGroup = styled.div`
     margin-top: 8px;
 `;
 
-const ActionButton = styled.button`
-    padding: 8px;
-    border: none;
-    background: #1a6692;
-    font-size: 12px;
-    color: white;
-`;
 const { TabPane } = Tabs;
 const Products = () => {
     const [productImage, setProductImage] = useState(null);
+    const [productName, setProductName] = useState(null);
+    const [productPrice, setProductPrice] = useState(0.0);
+    const [productQuantity, setProductQuantity] = useState(0.0);
+    const [productDescription, setProductDescription] = useState(null);
 
-    const imageFileSelectionChangeHandler = (event) =>
+    const [isFormValid, setIsFormValid] = useState(true);
+
+    const imageFileSelectionChangeHandler = (event) => {
         setProductImage(event.target.files[0]);
+    };
+    const productNameChangeHandler = (event) => {
+        setProductName(event.target.value);
+    };
+    const productPriceChangeHandler = (event) => {
+        setProductPrice(event.target.value);
+    };
+    const productQuantityChangeHandler = (event) => {
+        setProductQuantity(event.target.value);
+    };
+    const productDescriptionChangeHandler = (event) => {
+        setProductDescription(event.target.value);
+    };
+
+    const performProductSaving = () => {
+        alert(
+            JSON.stringify(
+                {
+                    productName,
+                    productImage,
+                    productDescription,
+                    productQuantity,
+                    productPrice,
+                },
+                null,
+                2
+            )
+        );
+    };
+    // const formValidator = () => {
+    //     if (
+    //         productName !== null ||
+    //         productPrice !== 0.0 ||
+    //         productQuantity !== 0.0 ||
+    //         productDescription !== null ||
+    //         productImage !== null
+    //     ) {
+    //         setIsFormValid(true);
+    //     }
+    // };
 
     return (
         <Container>
@@ -123,9 +163,11 @@ const Products = () => {
                 <RegistrationForm>
                     <FormInputField>
                         <label htmlFor="product_name">Product name</label>
-                        <input
+                        <Input
                             type="text"
                             id="product_name"
+                            value={productName}
+                            onChange={productNameChangeHandler}
                             style={{
                                 padding: 4,
                                 width: "70%",
@@ -138,6 +180,8 @@ const Products = () => {
                         <label htmlFor="product_qte">Quantity</label>
                         <input
                             type="number"
+                            value={productQuantity}
+                            onChange={productQuantityChangeHandler}
                             id="product_qte"
                             style={{
                                 padding: 4,
@@ -148,9 +192,12 @@ const Products = () => {
                     </FormInputField>
                     <FormInputField>
                         <label htmlFor="product_price">Price</label>
-                        <input
+                        <Input
+                            addonBefore={<EuroOutlined />}
                             type="number"
                             id="product_price"
+                            value={productPrice}
+                            onChange={productPriceChangeHandler}
                             style={{
                                 padding: 4,
                                 width: "70%",
@@ -162,6 +209,8 @@ const Products = () => {
                         <label htmlFor="product_desc">Description</label>
                         <textarea
                             id="product_desc"
+                            value={productDescription}
+                            onChange={productDescriptionChangeHandler}
                             style={{
                                 padding: 4,
                                 resize: "none",
@@ -173,7 +222,18 @@ const Products = () => {
                         />
                     </FormInputField>
                     <ActionButtonGroup>
-                        <ActionButton>Save Product</ActionButton>
+                        <Button
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                            }}
+                            icon={<SaveOutlined />}
+                            type="primary"
+                            onClick={performProductSaving}
+                            disabled={!isFormValid}
+                        >
+                            Save Product
+                        </Button>
                     </ActionButtonGroup>
                 </RegistrationForm>
                 <Category />
