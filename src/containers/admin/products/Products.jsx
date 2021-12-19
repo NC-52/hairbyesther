@@ -106,7 +106,7 @@ const Products = () => {
     const [selectedCategory, setSelectedCategory] = useState(null);
 
     const dispatch = useDispatch();
-    const products = useSelector((state) => state.products);
+    const products = useSelector((state) => state.products.all);
 
     const [isFormValid, setIsFormValid] = useState(false);
 

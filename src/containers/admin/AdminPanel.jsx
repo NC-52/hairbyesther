@@ -10,6 +10,7 @@ import { sidebarMenuData } from "./sidebarMenuData";
 import SidebarMenuItem from "./sidebarItem/SidebarMenuItem";
 import Orders from "./orders/Orders";
 import Products from "./products/Products";
+import ProductDetails from "./products/ProductDetails";
 
 const Container = styled.div`
     //#ff9955
@@ -147,6 +148,10 @@ const AdminPanel = (props) => {
                             exact
                             path="/secure-admin/products"
                             component={Products}
+                        />
+                        <Route
+                            path="/secure-admin/products/:productId"
+                            component={ProductDetails}
                         />
                         <Route
                             exact

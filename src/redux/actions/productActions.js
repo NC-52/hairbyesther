@@ -16,3 +16,12 @@ export const getAllProducts = () => async (dispatch) => {
         payload: products.data,
     });
 };
+
+export const getProduct = (productId) => async (dispatch) => {
+    const product = await apiCalls.fetchSingleProduct(productId);
+    dispatch({
+        type: productActions.GET_PRODUCT,
+        payload: product.data,
+    });
+    return product;
+};

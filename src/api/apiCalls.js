@@ -12,3 +12,6 @@ export const addNewProduct = (product) =>
 
 export const fetchProducts = () =>
     axios.get(api.API_BASE_URL + "/api/estelle-shop/1.0/products");
+
+export const fetchSingleProduct = (id) =>
+    axios.get(`${api.API_BASE_URL}/api/estelle-shop/1.0/products/${id}`);

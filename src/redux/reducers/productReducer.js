@@ -1,12 +1,17 @@
 import * as productActions from "../constants/productActionTypes";
 
-const initialState = [];
+const initialState = {
+    all: [],
+    product: {},
+};
 
 export const productReducer = (state = initialState, action) => {
     if (action.type === productActions.GET_PRODUCTS) {
-        return [...action.payload];
+        return { ...state, all: [...action.payload] };
     } else if (action.type === productActions.ADD_PRODUCT) {
-        return [...state];
+        return { ...state };
+    } else if (action.type === productActions.GET_PRODUCT) {
+        return { ...state, product: { ...action.payload } };
     }
     return state;
 };
