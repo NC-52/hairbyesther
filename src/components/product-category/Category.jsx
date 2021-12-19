@@ -23,7 +23,7 @@ const Container = styled.div`
     }
 `;
 const { Option } = Select;
-const Category = () => {
+const Category = ({ handleSelectedCategory }) => {
     const [showModal, setShowModal] = useState(false);
     const [newCategoryName, setNewCategoryName] = useState(null);
     const [isOnGoingApiCall, setOngoingApiCall] = useState(false);
@@ -60,7 +60,7 @@ const Category = () => {
     };
 
     const handleCategorySelectChange = (event) => {
-        console.log(event);
+        handleSelectedCategory(event);
     };
 
     useEffect(() => {
@@ -71,7 +71,7 @@ const Category = () => {
         <Container>
             <h5>Category selection</h5>
             <Select
-                defaultValue={categories.length === 0 ? "Empty" : "Choose"}
+                defaultValue={categories.length === 0 ? "Empty" : undefined}
                 onChange={handleCategorySelectChange}
                 allowClear
             >

@@ -3,9 +3,13 @@ import { Avatar, Button, Image, Input, Table, Tabs, Tag } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import * as feedbacks from "../../../components/ui-feedbacks/messages/messages";
 import styled from "styled-components";
 import Category from "../../../components/product-category/Category";
-import { getAllProducts } from "../../../redux/actions/productActions";
+import {
+    getAllProducts,
+    saveProduct,
+} from "../../../redux/actions/productActions";
 
 const Container = styled.div`
     display: flex;
@@ -98,44 +102,96 @@ const Products = () => {
     const [productName, setProductName] = useState(null);
     const [productPrice, setProductPrice] = useState(0.0);
     const [productQuantity, setProductQuantity] = useState(0.0);
-    const [productDescription, setProductDescription] = useState(null);
+    const [productDescription, setProductDescription] = useState("");
+    const [selectedCategory, setSelectedCategory] = useState(null);
 
     const dispatch = useDispatch();
     const products = useSelector((state) => state.products);
 
-    const [isFormValid, setIsFormValid] = useState(true);
+    const [isFormValid, setIsFormValid] = useState(false);
 
-    const imageFileSelectionChangeHandler = (event) => {
+    const validateForm = () => {
+        if (
+            selectedCategory === undefined ||
+            selectedCategory === "Empty" ||
+            productName === null ||
+            productName.trim() === "" ||
+            productDescription === null ||
+            productDescription.trim() === "" ||
+            productPrice <= 0 ||
+            productQuantity <= 0 ||
+            productImage === null
+        ) {
+            setIsFormValid(true);
+        } else {
+            setIsFormValid(false);
+        }
+    };
+
+    const imageFileSelectionChangeHandler = (event) =>
         setProductImage(event.target.files[0]);
-    };
-    const productNameChangeHandler = (event) => {
+
+    const productNameChangeHandler = (event) =>
         setProductName(event.target.value);
-    };
-    const productPriceChangeHandler = (event) => {
+
+    const productPriceChangeHandler = (event) =>
         setProductPrice(event.target.value);
-    };
-    const productQuantityChangeHandler = (event) => {
+
+    const productQuantityChangeHandler = (event) =>
         setProductQuantity(event.target.value);
-    };
-    const productDescriptionChangeHandler = (event) => {
+
+    const productDescriptionChangeHandler = (event) =>
         setProductDescription(event.target.value);
+
+    const freeForm = () => {
+        setProductImage(null);
+        setProductName(null);
+        setProductPrice(0.0);
+        setProductQuantity(0.0);
+        setProductDescription("");
     };
 
     const performProductSaving = () => {
-        alert(
-            JSON.stringify(
-                {
-                    productName,
-                    productImage,
-                    productDescription,
-                    productQuantity,
-                    productPrice,
-                },
-                null,
-                2
-            )
+        const productData = new FormData();
+        productData.append("productImage", productImage);
+        productData.append(
+            "product",
+            JSON.stringify({
+                name: productName,
+                price: productPrice,
+                description: productDescription,
+                quantity: productQuantity,
+            })
         );
+        productData.append(
+            "category",
+            JSON.stringify({ name: selectedCategory })
+        );
+        dispatch(saveProduct(productData))
+            .then((response) => {
+                if (response.status === 201) {
+                    feedbacks.success("Product successfully saved");
+                }
+                freeForm();
+                dispatch(getAllProducts());
+            })
+            .catch((error) => {
+                if (error.response) {
+                    feedbacks.error(error.response.data);
+                }
+            });
     };
+
+    useEffect(() => {
+        validateForm();
+    }, [
+        selectedCategory,
+        productName,
+        productDescription,
+        productPrice,
+        productQuantity,
+        productImage,
+    ]);
 
     useEffect(() => {
         dispatch(getAllProducts());
@@ -277,19 +333,23 @@ const Products = () => {
                             icon={<SaveOutlined />}
                             type="primary"
                             onClick={performProductSaving}
-                            disabled={!isFormValid}
+                            disabled={isFormValid}
                         >
                             Save Product
                         </Button>
                     </ActionButtonGroup>
                 </RegistrationForm>
-                <Category />
+                <Category handleSelectedCategory={setSelectedCategory} />
             </ProductSection>
             <TabsWrapper>
                 <Tabs size="large" style={{ width: "100%" }}>
                     <TabPane tab="All" key="1">
                         {products && (
-                            <Table columns={columns} dataSource={products} />
+                            <Table
+                                key={products.id}
+                                columns={columns}
+                                dataSource={products}
+                            />
                         )}
                     </TabPane>
                     {/* <TabPane tab="Men products" key="2">
