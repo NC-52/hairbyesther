@@ -10,7 +10,7 @@ export const saveProduct = (productData) => async (dispatch) => {
 };
 
 export const getAllProducts = () => async (dispatch) => {
-    const products = await apiCalls.fetchCategories();
+    const products = await apiCalls.fetchProducts();
     dispatch({
         type: productActions.GET_PRODUCTS,
         payload: products.data,

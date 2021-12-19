@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import { EuroOutlined, SaveOutlined } from "@ant-design/icons";
+import { Avatar, Button, Image, Input, Table, Tabs, Tag } from "antd";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Category from "../../../components/product-category/Category";
-import { Tabs, Button, Input } from "antd";
-// import { useDispatch } from "react-redux";
-import { EuroOutlined, SaveOutlined } from "@ant-design/icons";
+import { getAllProducts } from "../../../redux/actions/productActions";
 
 const Container = styled.div`
     display: flex;
@@ -19,7 +21,7 @@ const ProductSection = styled.div`
 `;
 
 const TabsWrapper = styled.div`
-    width: 90vw;
+    width: 87vw;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -98,6 +100,9 @@ const Products = () => {
     const [productQuantity, setProductQuantity] = useState(0.0);
     const [productDescription, setProductDescription] = useState(null);
 
+    const dispatch = useDispatch();
+    const products = useSelector((state) => state.products);
+
     const [isFormValid, setIsFormValid] = useState(true);
 
     const imageFileSelectionChangeHandler = (event) => {
@@ -131,17 +136,59 @@ const Products = () => {
             )
         );
     };
-    // const formValidator = () => {
-    //     if (
-    //         productName !== null ||
-    //         productPrice !== 0.0 ||
-    //         productQuantity !== 0.0 ||
-    //         productDescription !== null ||
-    //         productImage !== null
-    //     ) {
-    //         setIsFormValid(true);
-    //     }
-    // };
+
+    useEffect(() => {
+        dispatch(getAllProducts());
+    }, []);
+
+    const columns = [
+        {
+            title: "",
+            dataIndex: "productImageList",
+            key: "productImageList",
+            render: (productImageList) => (
+                <Avatar
+                    shape="square"
+                    size={80}
+                    src={
+                        <Image
+                            src={productImageList[0].imageURl}
+                            style={{ width: 64 }}
+                        />
+                    }
+                />
+            ),
+        },
+        {
+            title: "Name",
+            dataIndex: "name",
+            key: "name",
+            render: (text, record) => (
+                <Link to={`/secure-admin/products/${record.id}`}>{text}</Link>
+            ),
+        },
+        {
+            title: "Category",
+            dataIndex: "category",
+            key: "category",
+            render: (category) => <Tag color="geekblue">{category.name}</Tag>,
+        },
+        {
+            title: "Description",
+            dataIndex: "description",
+            key: "description",
+        },
+        {
+            title: "Price",
+            dataIndex: "price",
+            key: "price",
+        },
+        {
+            title: "Quantity",
+            dataIndex: "quantity",
+            key: "quantity",
+        },
+    ];
 
     return (
         <Container>
@@ -239,13 +286,15 @@ const Products = () => {
                 <Category />
             </ProductSection>
             <TabsWrapper>
-                <Tabs>
-                    <TabPane tab="Women products" key="1">
-                        <p>One tab</p>
+                <Tabs size="large" style={{ width: "100%" }}>
+                    <TabPane tab="All" key="1">
+                        {products && (
+                            <Table columns={columns} dataSource={products} />
+                        )}
                     </TabPane>
-                    <TabPane tab="Men products" key="2">
+                    {/* <TabPane tab="Men products" key="2">
                         <p>Second tab</p>
-                    </TabPane>
+                    </TabPane> */}
                 </Tabs>
             </TabsWrapper>
         </Container>
